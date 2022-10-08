@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: kpop-cassandra-dev
+    image: kpop-cassandra
+    ports:
+      - 9043:9043
+    environment:
+      CASSANDRA_USE_ASTRA: "false"
+      CASSANDRA_USER: "cassandra"
+      CASSANDRA_PASSWORD: "cassandra"
+      CASSANDRA_LOCAL_DC: "datacenter1"
+      CASSANDRA_CONTACT_POINTS: "db:9043"
+      CASSANDRA_KEYSPACE_CQL: "CREATE KEYSPACE kpop WITH REPLICATION = {'class':'SimpleStrategy','replication_factor':1};"
+      MONITORING_PROMETHEUS: "false"
+      MONITORING_GRAFANA: "false"
+      DISTRIBUTED_TRACING_ENABLED: "false"

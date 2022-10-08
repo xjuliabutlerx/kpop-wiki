@@ -15,17 +15,17 @@ public class BandController {
 
     @PostMapping("/band")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Band> createProduct(@RequestBody Band band){
+    public Mono<Band> createBand(@RequestBody Band band){
         return bandService.saveBand(band);
     }
 
     @GetMapping("/listBands")
-    public Flux<Band> getAllProducts(){
+    public Flux<Band> getAllBands(){
         return bandService.getAllBands();
     }
 
     @DeleteMapping("/band/{id}")
-    public Mono<Void> deleteProduct(@PathVariable Integer id){
+    public Mono<Void> deleteBand(@PathVariable Integer id){
         return bandService.deleteBand(id);
     }
 
@@ -35,7 +35,7 @@ public class BandController {
     }
 
     @PutMapping("/band/{id}")
-    public Mono<Band> updateProduct(@RequestBody Band band){
+    public Mono<Band> updateBand(@RequestBody Band band){
         return bandService.update(Mono.just(band));
     }
 }
